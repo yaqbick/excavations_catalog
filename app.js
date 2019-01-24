@@ -1,42 +1,15 @@
-var map;
-function getData() 
-{
-  map = new google.maps.Map(document.querySelector('#map'),{
-    center: {lat:35, lng:-85},
-    zoom: 14 
-  }) 
-  $.ajax({
-  url: "map_api_wrapper.php",
-  async: true,
-  dataType: 'json',
-  success: function (data) {
-    console.log(data);
-    //load map
-    init_map(data);
-  }
-});  
-}
 
-function init_map(data) {
-      var map_options = {
-          zoom: 14,
-          center: new google.maps.LatLng(data['latitude'], data['longitude'])
-        }
-      map = new google.maps.Map(document.getElementById("map"), map_options);
-     marker = new google.maps.Marker({
-          map: map,
-          position: new google.maps.LatLng(data['latitude'], data['longitude'])
-      });
-      infowindow = new google.maps.InfoWindow({
-          content: data['formatted_address']
-      });
-      google.maps.event.addListener(marker, "click", function () {
-          infowindow.open(map, marker);
-      });
-      infowindow.open(map, marker);
-  }
+  function myFunction(imgs) {
+    // Get the expanded image
+    document.getElementById("default_img").style.display = "none";
 
-  function dupa()
-  {
-    alert("kutas");
+    var expandImg = document.getElementById("expandedImg");
+    // Get the image text
+    var imgText = document.getElementById("imgtext");
+    // Use the same src in the expanded image as the image being clicked on from the grid
+    expandImg.src = imgs.src;
+    // Use the value of the alt attribute of the clickable image as text inside the expanded image
+    imgText.innerHTML = imgs.alt;
+    // Show the container element (hidden with CSS)
+    expandImg.parentElement.style.display = "block";
   }
