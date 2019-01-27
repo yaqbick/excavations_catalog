@@ -16,15 +16,6 @@ if(isset($_GET['value']))
     //print_r($arr);
     echo $json;
 }
-if(isset($_POST['user']))
-{
-$user = $_POST['user'];
 
-//Decode the JSON string and convert it into a PHP associative array.
-$decoded = json_decode($user, true);
- 
-//var_dump the array so that we can view it's structure.
-var_dump($decoded);
-}
 
 ?>

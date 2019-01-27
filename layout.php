@@ -17,6 +17,24 @@
     <script>tinymce.init({ selector:'textarea.content' });</script>
     <script src="https://mdbootstrap.com/wp-includes/js/wp-emoji-release.min.js?ver=4.9.9" type="text/javascript" defer=""></script>
     <script src="app.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<!-- <script>
+//var name="dupa";
+
+$.ajax({
+    url: '/catalog.php',
+    type: 'POST',
+    data: {name: "name"},
+    success: function(data){
+    }
+});
+
+$.post("/catalog.php", {
+    name: "Johny",
+    surname: "Bravo"
+});
+
+</script> -->
     <style>
 
     #map 

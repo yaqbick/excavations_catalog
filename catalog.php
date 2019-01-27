@@ -1,13 +1,23 @@
 <?php 
+    if(isset($_POST['name']))
+    {
+        echo "<div id='status'></div>";
+    }
+    else
+    {
     require_once('layout.php');
     require_once('objectController.php');
+    
 
     $names=get_all_names();
     $communities = get_all_communities();
     $counties=get_all_counties();
-    echo "<div class = 'row justify-content-md-center pt-5'>
+    
+
+
+    echo "<div  class = 'row justify-content-md-center pt-5'>
          <div class='col-md-4'></div><div class='col-md-4 filter'>
-         <form name ='myForm' id='filter' action='catalog.php' method='post' onsubmit='return filter()'>
+         <form name ='myForm' id='filter' action='catalog.php' method='post' onsubmit='filter()'>
          ";
 
          foreach($communities as $community)
@@ -20,18 +30,13 @@
             echo "<input type='checkbox' class='county' name='county' value='$county'><label  for='$county'>$county</label>";
         }
     echo "</div><div class='col-md-4'><button class='btn btn-info' type='submit'>szukaj</button></form></div></div>";
-
-    
-    if(isset($_POST['value']))
-    {
-        echo "sukces!";
-    }
+    // echo "<button onclick='ajax()'>test</button>";
 
     
         $n=0;
         for($i=0; $i<1; $i++)
         {
-            echo "<div class='row justify-content-md-center pt-5'>";
+            echo "<div id='status' class='row justify-content-md-center pt-5'>";
             for($j=0;$j<4;$j++)
             {
                 echo "<div class='card col-md-2 catalog_item'>
@@ -48,32 +53,9 @@
             $n=$n+4;
             echo"</div>";
         }
-
-?>
-
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script>
-
-$.ajax({
-    url: '/catalog.php',
-    type: 'POST',
-    data: {name: 'Wayne', age: 27},
-    success: function(response){
-        alert("sukces!")
     }
-});
-</script>
-<?php
-        if(isset($_POST['user']))
-        {
-        $user = $_POST['user'];
- 
-        //Decode the JSON string and convert it into a PHP associative array.
-        $decoded = json_decode($user, true);
-         
-        //var_dump the array so that we can view it's structure.
-        var_dump($decoded);
-        }
+
+       
 
 ?>
 </body>
