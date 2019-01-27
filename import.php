@@ -52,7 +52,7 @@
                                 {
                                     move_uploaded_file($_FILES['images']['tmp_name'][$i], 'Images/'.$name);
                                     var_dump($_FILES['images']['tmp_name'][$i]);
-                                    $path='https://lubelskiegrody.pl/Images/'.$name;
+                                    $path='/Images/'.$name;
                                     $query = "INSERT INTO 29134484_yaqbick.images(name, path) VALUES('$settl','$path')";
                                     array_push($import, "exist");
                                     $link=connect();

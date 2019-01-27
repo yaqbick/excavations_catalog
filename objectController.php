@@ -11,7 +11,21 @@
 
                 return $link;
             }
-
+            function get_all() //funkcja zwraca zawartość bazy danych w formie
+            {
+                $link=connect();
+                $objects=array();
+                $query="SELECT distinct * from 29134484_yaqbick.objects";
+                $result=mysqli_query($link, $query)  or die(mysqli_error($link));
+                while($row =(mysqli_fetch_assoc($result)))
+                {
+                    $item=new items($row['id'],$row['name'],$row['community'],$row['county'],$row['latitude'],$row['longitude'],$row['azp'],$row['chronology']);                
+                    array_push($objects,$item);
+                }
+                return $objects;
+                mysqli_close($link);
+            }
+            
 
             function get_items_by_name($name) //funkcja zwraca obiekt items o danej nazwie
             {
@@ -54,6 +68,37 @@
                 return $images;
                 mysqli_close($link);
             }
+            function get_all_counties() //funkcja zwraca tablicę ze wszystkimi nazwami powiatów
+            {
+                $link=connect();
+                $counties=array();
+                $query="SELECT distinct county from 29134484_yaqbick.objects";
+                $result=mysqli_query($link, $query)  or die(mysqli_error($link));
+                while($row =(mysqli_fetch_assoc($result)))
+                {
+                    array_push($counties,$row['county']);
+                }
+
+                return $counties;
+
+                mysqli_close($link);
+            }
+            function get_all_communities() //funkcja zwraca tablicę ze wszystkimi nazwami powiatów
+            {
+                $link=connect();
+                $communities=array();
+                $query="SELECT distinct community from 29134484_yaqbick.objects";
+                $result=mysqli_query($link, $query)  or die(mysqli_error($link));
+                while($row =(mysqli_fetch_assoc($result)))
+                {
+                    array_push($communities,$row['community']);
+                }
+
+                return $communities;
+
+                mysqli_close($link);
+            }
+        
 
 
 

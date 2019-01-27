@@ -1,6 +1,13 @@
 <?php 
 
-class items //tworzenie obiektów
+trait JsonSerializer {
+    public function jsonSerialize()
+    {
+        return get_object_vars($this);
+    }
+}
+
+class items implements \JsonSerializable  //tworzenie obiektów
 {
     protected $id;
     protected $name;
@@ -84,5 +91,6 @@ class items //tworzenie obiektów
         $this->chronology=$chronology;
 
     }
+    use JsonSerializer;
 }
 ?>

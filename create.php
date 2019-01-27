@@ -33,7 +33,7 @@
         </form>
                     </div>
                     <div class="import">
-                        <form action="https://lubelskiegrody.pl/import.php" method="POST">
+                        <form action="/import.php" method="POST">
                             <button class="btn btn-info">Masowy import plików</button>
                         </form>
                     </div>

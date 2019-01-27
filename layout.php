@@ -3,9 +3,11 @@
   <head>
   <title>Lubelskie Grody</title>
     <meta name="viewport" content="initial-scale=1.0">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
-    <!-- <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.js"></script> -->
+    <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
@@ -16,11 +18,18 @@
     <script src="https://mdbootstrap.com/wp-includes/js/wp-emoji-release.min.js?ver=4.9.9" type="text/javascript" defer=""></script>
     <script src="app.js"></script>
     <style>
-        
-        body
+
+    #map 
     {
-        background-color: #f0f0f0;
+      height: 100%;
     }
+      
+    html, body 
+    {
+      height: 100%;
+      background-color: #f0f0f0;
+    }
+      
     .submit
     {
         padding-top: 120px;
@@ -31,23 +40,38 @@
         padding-top: 20px;
         padding-left: 30px;
     }
-    table {
+    table 
+    {
         font-family: arial, sans-serif;
         border-collapse: collapse;
         width: 100%;
-        }
+    }
 
-        td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-        }
+    td, th 
+    {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    }
     .catalog_item
     {
         margin-left: auto;
         margin-right: auto;
         text-align: center;
     }
+    .filter
+    {
+      border: 1px solid #dddddd;
+      text-align: center;
+      background-color:white;
+    }
+    .filter_item
+    {
+      display: inline;
+      padding: 2px;
+      text-decoration: none;
+    }
+
     img {
         display: block;
         margin-left: auto;
@@ -55,7 +79,7 @@
         width: 40%;
     }
 
-        .column {
+   .column {
   float: left;
   width: 25%;
   padding: 10px;
@@ -110,9 +134,9 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="https://lubelskiegrody.pl/catalog.php">Katalog</a>
-      <a class="nav-item nav-link" href="#">Mapa</a>
-      <a class="nav-item nav-link" href="https://lubelskiegrody.pl/create.php">Panel Administratora</a>
+      <a class="nav-item nav-link" href="/catalog.php">Katalog</a>
+      <a class="nav-item nav-link" href="/map.php">Mapa</a>
+      <a class="nav-item nav-link" href="/create.php">Panel Administratora</a>
     </div>
   </div>
 </nav>
