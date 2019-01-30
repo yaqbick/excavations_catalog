@@ -98,6 +98,19 @@
 
                 mysqli_close($link);
             }
+            function get_objects_by_query($query)
+            {
+                $link=connect();
+                $result=mysqli_query($link, $query)  or die(mysqli_error($link));
+                $objects=array();
+                while($row =(mysqli_fetch_assoc($result)))
+                {
+                    $item=new items($row['id'],$row['name'],$row['community'],$row['county'],$row['latitude'],$row['longitude'],$row['azp'],$row['chronology']);                
+                    array_push($objects,$item);
+                }
+                return $objects;
+                mysqli_close($link);
+            }
         
 
 

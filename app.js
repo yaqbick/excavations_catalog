@@ -19,7 +19,7 @@
   {
     var checked= new Array();
     var filter = document.getElementById("filter");
-    var category = ["community", "county"];
+    var category = ["community", "county", "chronology"];
     for(var i=0; i<category.length;i++)
     {
       var check = filter.getElementsByClassName(category[i]);
@@ -28,12 +28,13 @@
       {
         if(check[j].checked==true)
         {
-          //alert(check[j].value);
-          checked.push(check[j].value);
+          var item= {category: category[i], value: check[j].value}
+          checked.push(item);
 
         }
       }
     }
+    console.log(checked[0].category);
     ajax(checked);
   }
   function ajax(checked)
@@ -41,43 +42,22 @@
 
           var xml = new XMLHttpRequest();
           xml.overrideMimeType('text/xml');
+          var str ="";
           for(var i=0; i<checked.length;i++)
           {
-            var str = "name="+checked[i]+"&";
+            str = str+checked[i].category+"="+checked[i].value+"&"; 
           }
           xml.open("POST", "/catalog.php?" + str, true);
-          xml.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+           xml.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
           xml.onreadystatechange = function() {
               if (this.readyState == 4 && this.status == 200) {
                   var return_data=xml.responseText;
                   console.log(return_data);
-                  alert('udało się');
-                  document.getElementById('status').innerHTML=checked;
+                  document.getElementById('status').innerHTML=return_data;
+                  
               }
           };
           xml.send(str);
-
-  //   var value = 
-  //   {
-  //     'value': check_value
-  //   };
-  //   // var x=JSON.stringify(value);
-  //   $.ajax({
-  //     type: "POST",
-  //     url: 'catalog.php',
-  //     data: {value : "dupa"},
-  //     success: function(data)
-  //     {
-  //         alert("success!");
-  //     },
-  //     error: function(xhr, textStatus, error) {
-  //       console.log(xhr.responseText);
-  //       console.log(xhr.statusText);
-  //       console.log(textStatus);
-  //       console.log(error);
-
-  //     }
-  // });
   }
 
 
