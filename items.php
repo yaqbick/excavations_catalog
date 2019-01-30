@@ -17,6 +17,7 @@ class items implements \JsonSerializable  //tworzenie obiektów
     protected $longitude;
     protected $azp;
     protected $chronology;
+    protected $image;
 
     function getId()
     {
@@ -58,6 +59,11 @@ class items implements \JsonSerializable  //tworzenie obiektów
         return $this->chronology;
     }
 
+    function getImage()
+    {
+        return $this->image;
+    }
+
 
     function setId($id)
     {
@@ -79,7 +85,7 @@ class items implements \JsonSerializable  //tworzenie obiektów
         $this->chronology=$chronology;
     }
 
-    function __construct($id, $name, $community, $county, $latitude, $longitude, $azp, $chronology)
+    function __construct($id, $name, $community, $county, $latitude, $longitude, $azp, $chronology, $image)
     {
         $this->id=$id;
         $this->name=$name;
@@ -89,6 +95,7 @@ class items implements \JsonSerializable  //tworzenie obiektów
         $this->longitude=$longitude;
         $this->azp=$azp;
         $this->chronology=$chronology;
+        $this->image=$image;
 
     }
     use JsonSerializer;

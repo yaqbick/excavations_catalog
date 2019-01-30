@@ -19,7 +19,7 @@
                 $result=mysqli_query($link, $query)  or die(mysqli_error($link));
                 while($row =(mysqli_fetch_assoc($result)))
                 {
-                    $item=new items($row['id'],$row['name'],$row['community'],$row['county'],$row['latitude'],$row['longitude'],$row['azp'],$row['chronology']);                
+                    $item=new items($row['id'],$row['name'],$row['community'],$row['county'],$row['latitude'],$row['longitude'],$row['azp'],$row['chronology'],$row['Image']);                
                     array_push($objects,$item);
                 }
                 return $objects;
@@ -35,7 +35,7 @@
                 $result =(mysqli_fetch_assoc($result));
                 mysqli_close($link);
 
-                $item=new items($result['id'],$result['name'],$result['community'],$result['county'],$result['longitude'],$result['latitude'],$result['azp'],$result['chronology']);
+                $item=new items($result['id'],$result['name'],$result['community'],$result['county'],$result['longitude'],$result['latitude'],$result['azp'],$result['chronology'],$row['Image']);
                 return $item;
             }
 
@@ -105,7 +105,7 @@
                 $objects=array();
                 while($row =(mysqli_fetch_assoc($result)))
                 {
-                    $item=new items($row['id'],$row['name'],$row['community'],$row['county'],$row['latitude'],$row['longitude'],$row['azp'],$row['chronology']);                
+                    $item=new items($row['id'],$row['name'],$row['community'],$row['county'],$row['latitude'],$row['longitude'],$row['azp'],$row['chronology'], $row['Image']);                
                     array_push($objects,$item);
                 }
                 return $objects;

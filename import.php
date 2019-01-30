@@ -58,6 +58,14 @@
                                     $link=connect();
                                     $result=mysqli_query($link, $query)  or die(mysqli_error($link));
                                     mysqli_close($link);
+                                    if(substr_count($name,"Main")==!0) // funkcja dodaje główne zdjęcie do tabeli 'objects', kolumna Image
+                                    {
+                                        $link=connect();
+                                        $path='/Images/'.$name;
+                                        $query="UPDATE 29134484_yaqbick.objects SET Image='$path' WHERE name='$settl'";
+                                        $result=mysqli_query($link, $query)  or die(mysqli_error($link));
+                                        mysqli_close($link);
+                                    }
                                 }
                             }
                             if (in_array("exist", $import))

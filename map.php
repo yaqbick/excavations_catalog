@@ -26,10 +26,13 @@
                 var longitude =convert(json_data[i].longitude);
                 var coordinates= {lat: latitude , lng: longitude};
                 var title= json_data[i].name;
+                var image= json_data[i].image;
+                console.log(json_data[i]);
                 var marker = new google.maps.Marker(
                   {
                     position: coordinates,
                     title: title,
+                    image: image,
                     map: map, 
                   });
                
@@ -41,9 +44,19 @@
               function choose_marker_data()
               {
                 var infowindow = new google.maps.InfoWindow();
-                infowindow.setContent("<h1><a href = '/excavation.php?name="+this.title+"'>"+this.title+"</a></h1>");
+                infowindow.setContent("<div class='card'><a href = '/excavation.php?name="+this.title+
+                                      "'><img class='card-img-top' src='"+this.image+
+                                      "' alt='Card image cap'><div class='card-body'><h5 class='card-title'>"+this.title+
+                                      "</h5></a></div>");
+                                      
+                                      
+                                  
+  
+                  
                 infowindow.open(map, this);
               }
+
+                               
               
         };
       }
